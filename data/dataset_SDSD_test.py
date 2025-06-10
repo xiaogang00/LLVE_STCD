@@ -34,30 +34,6 @@ class VideoSameSizeDataset(data.Dataset):
         subfolders_LQ = util.glob_file_list(self.LQ_root)
         subfolders_GT = util.glob_file_list(self.GT_root)
 
-        self.imgs_LQ2, self.imgs_GT2 = {}, {}
-        index_name=['D5', 'book', 'room', 'still2', 'still3', 'still4']
-        self.data_info2 = {'path_LQ': [], 'path_GT': [], 'folder': [], 'idx': [], 'border': []}
-        for mm in range(len(index_name)):
-            path_this=os.path.join('/home/nfs/nerf_dataset/llnerf-dataset/'+index_name[mm], 'images')
-            img_paths_LQ = util.glob_file_list(path_this)
-            img_paths_GT = util.glob_file_list(path_this)
-            max_idx = len(img_paths_LQ)
-            self.data_info2['path_LQ'].extend(img_paths_LQ)  # list of path str of images
-            self.data_info2['path_GT'].extend(img_paths_GT)
-            subfolder_name=index_name[mm]
-            self.data_info2['folder'].extend([subfolder_name] * max_idx)
-            for i in range(max_idx):
-                self.data_info2['idx'].append('{}/{}'.format(i, max_idx))
-            border_l = [0] * max_idx
-            for i in range(self.half_N_frames):
-                border_l[i] = 1
-                border_l[max_idx - i - 1] = 1
-            self.data_info2['border'].extend(border_l)
-            if self.cache_data:
-                self.imgs_LQ2[subfolder_name] = img_paths_LQ
-                self.imgs_GT2[subfolder_name] = img_paths_GT
-
-
         for subfolder_LQ, subfolder_GT in zip(subfolders_LQ, subfolders_GT):
             # for frames in each video:
             subfolder_name = osp.basename(subfolder_GT)
