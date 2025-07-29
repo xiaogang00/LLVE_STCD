@@ -1,7 +1,7 @@
 # Low-Light Video Enhancement via Spatial-Temporal Consistent Decomposition
 
 This is a pytorch project for the paper **Low-Light Video Enhancement via Spatial-Temporal Consistent Decomposition** by Xiaogang Xu, Kun Zhou, Tao Hu, Jiafei Wu, Ruixing Wang, Hao Peng, and Bei Yu presented at **IJCAI2025**.
-
+(The previous title is called "Low-Light Video Enhancement via Spatial-Temporal Consistent Illumination and Reflection Decomposition")
 
 ## Introduction
 In this paper, we present an innovative video decomposition strategy that incorporates view-independent and view-dependent components to enhance the performance of LLVE. We leverage dynamic cross-frame correspondences for the view-independent term (which primarily captures intrinsic appearance) and impose a scene-level continuity constraint on the view-dependent term (which mainly describes the shading condition) to achieve consistent and satisfactory decomposition results. To further ensure consistent decomposition, we introduce a dual-structure enhancement network featuring a cross-frame interaction mechanism. By supervising different frames simultaneously, this network encourages them to exhibit matching decomposition features.
